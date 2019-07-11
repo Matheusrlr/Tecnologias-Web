@@ -1,0 +1,132 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Valor</th>
+    <th scope="col">Data</th>
+    <th scope="col">Quantidade_ingressos</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Horario</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let festa of festas">
+    <td>{{festa.nome}}</td>
+    <td>{{festa.valor}}</td>
+    <td>{{festa.data}}</td>
+    <td>{{festa.quantidade_ingressos}}</td>
+    <td>{{festa.tipo}}</td>
+    <td>{{festa.horario}}</td>
+    <td>
+      <button type="button" class="btn btn-primary btn-sm" (click)="editar(festa,content)"><i class="fa fa-pencil"></i></button>&nbsp;
+      <button type="button" class="btn btn-danger btn-sm" (click)="apagar(festa)"><i class="fa fa-times"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-outline-dark" (click)="adicionar(contentModalAdicionar)"><i class="fa fa-plus"></i> Adicionar</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-editar-festa">Editar Festa</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #festaForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <div class="input-group">
+          <input id="nome" class="form-control" ngModel="{{festaSelecionado.nome}}" name="nome">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="valor">Valor</label>
+        <div class="input-group">
+          <input id="valor" class="form-control" ngModel="{{festaSelecionado.valor}}" name="valor">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="data">Data</label>
+        <div class="input-group">
+          <input id="data" class="form-control" ngModel="{{festaSelecionado.data}}" name="data">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="quantidade_ingressos">Quantidade_ingressos</label>
+        <div class="input-group">
+          <input id="quantidade_ingressos" class="form-control" ngModel="{{festaSelecionado.quantidade_ingressos}}" name="quantidade_ingressos">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <div class="input-group">
+          <input id="tipo" class="form-control" ngModel="{{festaSelecionado.tipo}}" name="tipo">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="horario">Horario</label>
+        <div class="input-group">
+          <input id="horario" class="form-control" ngModel="{{festaSelecionado.horario}}" name="horario">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(festaForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #contentModalAdicionar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-adicionar-festa">Adicionar Festa</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #festaFormAdicionar="ngForm">
+      <div class="form-group">
+        <label for="nome_adicionar">Nome</label>
+        <div class="input-group">
+          <input id="nome_adicionar" class="form-control" [(ngModel)]="festaNovo.nome" name="nome">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="valor_adicionar">Valor</label>
+        <div class="input-group">
+          <input id="valor_adicionar" class="form-control" [(ngModel)]="festaNovo.valor" name="valor">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="data_adicionar">Data</label>
+        <div class="input-group">
+          <input id="data_adicionar" class="form-control" [(ngModel)]="festaNovo.data" name="data">
+        </div>
+      </div>
+          <div class="form-group">
+            <label for="quantidade_ingressos_adicionar">Quantidade_ingressos</label>
+            <div class="input-group">
+              <input id="quantidade_ingressos_adicionar" class="form-control" [(ngModel)]="festaNovo.quantidade_ingressos" name="quantidade_ingressos">
+            </div>
+          </div>
+              <div class="form-group">
+                <label for="tipo_adicionar">Tipo</label>
+                <div class="input-group">
+                  <input id="tipo_adicionar" class="form-control" [(ngModel)]="festaNovo.tipo" name="tipo">
+                </div>
+              </div>
+                  <div class="form-group">
+                    <label for="horario_adicionar">Horario</label>
+                    <div class="input-group">
+                      <input id="horario_adicionar" class="form-control" [(ngModel)]="festaNovo.horario" name="horario">
+                    </div>
+                  </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(festaFormAdicionar)">Save</button>
+  </div>
+</ng-template>

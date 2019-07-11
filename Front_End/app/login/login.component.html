@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div class="card card-container">
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-signin">
+      <span id="reauth-email" class="reauth-email"></span>
+      <input type="text" id="login" class="form-control" placeholder="Nome" required autofocus name="nome" [(ngModel)]="login">
+      <input type="password" id="senha" class="form-control" placeholder="Password" required name="password" [(ngModel)]="senha">
+      <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin" (click)="login1()">Entrar</button>
+    </form>
+    <img src="imagens/rock3.jpg" alt="Smiley face" height="30%" width="100%">
+  </div>
+</div>

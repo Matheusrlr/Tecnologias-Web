@@ -1,0 +1,118 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Email</th>
+    <th scope="col">Cnpj</th>
+    <th scope="col">Login</th>
+    <th scope="col">Senha</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let empresa of empresas">
+    <td>{{empresa.nome}}</td>
+    <td>{{empresa.email}}</td>
+    <td>{{empresa.cnpj}}</td>
+    <td>{{empresa.login}}</td>
+    <td>*******</td>
+    <td>
+      <button type="button" class="btn btn-primary btn-sm" (click)="editar(empresa,content)"><i class="fa fa-pencil"></i></button>&nbsp;
+      <button type="button" class="btn btn-danger btn-sm" (click)="apagar(empresa)"><i class="fa fa-times"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-outline-dark" (click)="adicionar(contentModalAdicionar)"><i class="fa fa-plus"></i> Adicionar</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-editar-empresa">Editar Empresa</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #empresaForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <div class="input-group">
+          <input id="nome" class="form-control" ngModel="{{empresaSelecionado.nome}}" name="nome">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-group">
+          <input id="email" class="form-control" ngModel="{{empresaSelecionado.email}}" name="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cnpj">Cnpj</label>
+        <div class="input-group">
+          <input id="cnpj" class="form-control" ngModel="{{empresaSelecionado.cnpj}}" name="cnpj" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="login">Login</label>
+        <div class="input-group">
+          <input id="login" class="form-control" ngModel="{{empresaSelecionado.login}}" name="login">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <div class="input-group">
+          <input type="password" id="senha" class="form-control" ngModel="{{empresaSelecionado.senha}}" name="senha">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(empresaForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #contentModalAdicionar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-adicionar-empresa">Adicionar Empresa</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #empresaFormAdicionar="ngForm">
+      <div class="form-group">
+        <label for="nome_adicionar">Nome</label>
+        <div class="input-group">
+          <input id="nome_adicionar" class="form-control" [(ngModel)]="empresaNovo.nome" name="nome">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email_adicionar">Email</label>
+        <div class="input-group">
+          <input id="email_adicionar" class="form-control" [(ngModel)]="empresaNovo.email" name="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cnpj_adicionar">Cnpj</label>
+        <div class="input-group">
+          <input id="cnpj_adicionar" class="form-control" [(ngModel)]="empresaNovo.cnpj" name="cnpj">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="login_adicionar">Login</label>
+        <div class="input-group">
+          <input id="login_adicionar" class="form-control" [(ngModel)]="empresaNovo.login" name="login">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="senha_adicionar">Senha</label>
+        <div class="input-group">
+          <input id="senha_adicionar" class="form-control" [(ngModel)]="empresaNovo.senha" name="senha">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(empresaFormAdicionar)">Save</button>
+  </div>
+</ng-template>

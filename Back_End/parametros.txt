@@ -1,0 +1,43 @@
+"nome": "Arapuca",
+"data": "20/12/2018",	
+"valor": "400,00",
+"quantidade_ingressos" : "100000",
+"tipo" : "Pista",
+"horario" : "22:00"
+
+
+"cnpj" : "02020202020",
+"email": "arapucafestas@gmail.com",
+"nome": "Lavras Produções",
+"login" : "Ufla",
+"senha"	: "party"
+
+"cpf" : "1920490093",
+"email": "festeiro.vagabundasso@gmail.com",
+"nome": "Samuel",
+"login" : "Alto Clero",
+"senha"	: "fodas"
+
+
+
+
+
+
+
+
+
+
+
+
+app.post ('/usuario', function(req,res){
+    Usuario.create(req.body, function(err,Usuario){
+        if(err){
+            res.send('erro ao salvar o usuario');
+            console.log ('Ocorreu um problema',err);
+
+        }else{
+            console.log("Usuario");
+            res.send("Cadastrado com Sucesso");
+        }
+    });
+});
